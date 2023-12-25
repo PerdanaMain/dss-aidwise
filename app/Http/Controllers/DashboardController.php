@@ -118,16 +118,18 @@ class DashboardController extends Controller
         $vektor_s_total = 0;
         $vektor_v_total = 0;
 
-        foreach ($pvs as $key => $value) {
-            $vektor_s[] = [
-                'people_id' => $value['people_id'],
-                'code_name' => $value['code_name'],
-                'value' =>
-                pow($value['ownership'], $bobot[0]['rank']) *
-                pow($value['income'], $bobot[1]['rank']) *
-                pow($value['citizen_status'], $bobot[2]['rank']) *
-                pow($value['family_dependents'], $bobot[3]['rank']),
-            ];
+        if ($pvs != null) {
+            foreach ($pvs as $key => $value) {
+                $vektor_s[] = [
+                    'people_id' => $value['people_id'],
+                    'code_name' => $value['code_name'],
+                    'value' =>
+                    pow($value['ownership'], $bobot[0]['rank']) *
+                    pow($value['income'], $bobot[1]['rank']) *
+                    pow($value['citizen_status'], $bobot[2]['rank']) *
+                    pow($value['family_dependents'], $bobot[3]['rank']),
+                ];
+            }
         }
         // count total value vektor s
         foreach ($vektor_s as $key => $value) {
@@ -219,5 +221,11 @@ class DashboardController extends Controller
         $eigen_vector = session()->get('eigen_vector');
 
         return view('pages.ahp', compact('valuations', 'pcm', 'normalization', 'eigen_vector'));
+    }
+
+    public function template()
+    {
+        // Download AidWise Template.xlsx from storage/app/public/template
+        return response()->download(storage_path('app/public/Template AidWise.xlsx'));
     }
 }

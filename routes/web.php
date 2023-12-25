@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get("/template", [DashboardController::class, "template"])->name("template");
 
     // route for ahp method
     Route::get('/ahp', [DashboardController::class, 'ahpView'])->name('ahp');
@@ -31,6 +32,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/people', [PeopleController::class, 'index'])->name('people');
     Route::post('/people', [PeopleController::class, 'store'])->name('people.store');
+    Route::post('/peoples', [PeopleController::class, 'stores'])->name('peoples.store');
     Route::put('/people/{id}', [PeopleController::class, 'update'])->name('people.update');
     Route::delete('/people/{id}', [PeopleController::class, 'destroy'])->name('people.destroy');
 

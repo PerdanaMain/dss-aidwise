@@ -83,7 +83,7 @@
                         {{-- Modal Peoples --}}
                         <div class="modal fade" id="addPeoples" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog" role="document">
-                                <form action="{{ route('people.store') }}" method="post">
+                                <form action="{{ route('peoples.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -96,12 +96,13 @@
                                                 <div class="col-12 mb-2 mt-2">
                                                     <div class="form-floating form-floating-outline">
                                                         <input type="file" id="people_excel" class="form-control"
-                                                            name="people_excel" placeholder="Masukkan File Excel" />
+                                                            name="people_excel" accept=".xlsx" />
                                                         <label for="people_excel">File Excel</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 mb-2 mt-2">
-                                                    <a href="" class="btn btn-warning">Template Data</a>
+                                                    <a href="{{ route('template') }}" class="btn btn-warning">Template
+                                                        Data</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,6 +334,15 @@
                 icon: 'success',
                 title: 'Success...',
                 text: '{{ session('add_success') }}',
+            })
+        </script>
+    @endif
+    @if (session('add_failed'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'error...',
+                text: '{{ session('add_failed') }}',
             })
         </script>
     @endif

@@ -56,117 +56,124 @@
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            @foreach ($peoples as $p)
-                                                                                <tr>
-                                                                                    <td class="text-truncate">
-                                                                                        {{ $p->code_name }}</td>
-                                                                                    <td>
-                                                                                        <div
-                                                                                            class="form-floating form-floating-outline mb-4">
-                                                                                            <select class="form-select"
-                                                                                                id="ownership"
-                                                                                                name="ownership[]">
-                                                                                                <option selected hidden
-                                                                                                    value=0>==
-                                                                                                    Status ==
-                                                                                                </option>
-                                                                                                <option value=5>Sewa
-                                                                                                </option>
-                                                                                                <option value=1>Milik
-                                                                                                    Sendiri</option>
-                                                                                            </select>
-                                                                                            <label
-                                                                                                for="ownership">Kepemilikkan
-                                                                                                Rumah</label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <div
-                                                                                            class="form-floating form-floating-outline mb-4">
-                                                                                            <select class="form-select"
-                                                                                                id="income"
-                                                                                                name="income[]">
-                                                                                                <option selected hidden
-                                                                                                    value=0>==
-                                                                                                    Pendapatan ==
-                                                                                                </option>
-                                                                                                <option value=4>
-                                                                                                    < Rp. 1.000.000</option>
-                                                                                                <option value=3>Rp.
-                                                                                                    1.000.000 - Rp.
-                                                                                                    1.500.000
-                                                                                                </option>
-                                                                                                <option value=2>Rp.
-                                                                                                    1.500.000 - Rp.
-                                                                                                    2.000.000
-                                                                                                </option>
-                                                                                                <option value=1>>Rp.
-                                                                                                    2.000.000</option>
-                                                                                            </select>
-                                                                                            <label for="income">Pendapatan
-                                                                                                Per
-                                                                                                Bulan</label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <div
-                                                                                            class="form-floating form-floating-outline mb-4">
-                                                                                            <select class="form-select"
-                                                                                                id="family_dependents"
-                                                                                                name="family_dependents[]">
-                                                                                                <option selected hidden
-                                                                                                    value=0>==
-                                                                                                    Tanggungan ==
-                                                                                                </option>
-                                                                                                <option value=5>
-                                                                                                    >= 4 Orang</option>
-                                                                                                <option value=4>3 Orang
-                                                                                                </option>
-                                                                                                <option value=3>2 Orang
-                                                                                                </option>
-                                                                                                <option value=2>1 Orang
-                                                                                                </option>
-                                                                                                <option value=1>Tidak Punya
-                                                                                                </option>
-                                                                                            </select>
-                                                                                            <label
-                                                                                                for="family_dependents">Tanggungan
-                                                                                                Keluarga</label>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td>
-                                                                                        <div
-                                                                                            class="form-floating form-floating-outline mb-4">
-                                                                                            <select class="form-select"
-                                                                                                id="citizen_status"
-                                                                                                name="citizen_status[]">
-                                                                                                <option selected hidden
-                                                                                                    value=0>==
-                                                                                                    Status KTP ==
-                                                                                                </option>
-                                                                                                <option value=1>
-                                                                                                    Warga Asli Desa</option>
-                                                                                                <option value=5>Bukan Warga
-                                                                                                    Asli Desa
-                                                                                                </option>
-                                                                                            </select>
-                                                                                            <label
-                                                                                                for="citizen_status">Status
-                                                                                                KTP</label>
-                                                                                        </div>
-                                                                                        <input type="text"
-                                                                                            name="people_id[]"
-                                                                                            id="people_id{{ $p->people_id }}"
-                                                                                            value={{ $p->people_id }}
-                                                                                            hidden>
-                                                                                        <input type="text"
-                                                                                            name="code_name[]"
-                                                                                            id="code_name{{ $p->code_name }}"
-                                                                                            value={{ $p->code_name }}
-                                                                                            hidden>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            @endforeach
+                                                                            @if (count($peoples) != 0)
+                                                                                @foreach ($peoples as $p)
+                                                                                    <tr>
+                                                                                        <td class="text-truncate">
+                                                                                            {{ $p->code_name }}</td>
+                                                                                        <td>
+                                                                                            <div
+                                                                                                class="form-floating form-floating-outline mb-4">
+                                                                                                <select class="form-select"
+                                                                                                    id="ownership"
+                                                                                                    name="ownership[]">
+                                                                                                    <option selected hidden
+                                                                                                        value=0>==
+                                                                                                        Status ==
+                                                                                                    </option>
+                                                                                                    <option value=5>Sewa
+                                                                                                    </option>
+                                                                                                    <option value=1>Milik
+                                                                                                        Sendiri</option>
+                                                                                                </select>
+                                                                                                <label
+                                                                                                    for="ownership">Kepemilikkan
+                                                                                                    Rumah</label>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <div
+                                                                                                class="form-floating form-floating-outline mb-4">
+                                                                                                <select class="form-select"
+                                                                                                    id="income"
+                                                                                                    name="income[]">
+                                                                                                    <option selected hidden
+                                                                                                        value=0>==
+                                                                                                        Pendapatan ==
+                                                                                                    </option>
+                                                                                                    <option value=4>
+                                                                                                        < Rp.
+                                                                                                            1.000.000</option>
+                                                                                                    <option value=3>Rp.
+                                                                                                        1.000.000 - Rp.
+                                                                                                        1.500.000
+                                                                                                    </option>
+                                                                                                    <option value=2>Rp.
+                                                                                                        1.500.000 - Rp.
+                                                                                                        2.000.000
+                                                                                                    </option>
+                                                                                                    <option value=1>>Rp.
+                                                                                                        2.000.000</option>
+                                                                                                </select>
+                                                                                                <label
+                                                                                                    for="income">Pendapatan
+                                                                                                    Per
+                                                                                                    Bulan</label>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <div
+                                                                                                class="form-floating form-floating-outline mb-4">
+                                                                                                <select class="form-select"
+                                                                                                    id="family_dependents"
+                                                                                                    name="family_dependents[]">
+                                                                                                    <option selected hidden
+                                                                                                        value=0>==
+                                                                                                        Tanggungan ==
+                                                                                                    </option>
+                                                                                                    <option value=5>
+                                                                                                        >= 4 Orang</option>
+                                                                                                    <option value=4>3 Orang
+                                                                                                    </option>
+                                                                                                    <option value=3>2 Orang
+                                                                                                    </option>
+                                                                                                    <option value=2>1 Orang
+                                                                                                    </option>
+                                                                                                    <option value=1>Tidak
+                                                                                                        Punya
+                                                                                                    </option>
+                                                                                                </select>
+                                                                                                <label
+                                                                                                    for="family_dependents">Tanggungan
+                                                                                                    Keluarga</label>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <div
+                                                                                                class="form-floating form-floating-outline mb-4">
+                                                                                                <select class="form-select"
+                                                                                                    id="citizen_status"
+                                                                                                    name="citizen_status[]">
+                                                                                                    <option selected hidden
+                                                                                                        value=0>==
+                                                                                                        Status KTP ==
+                                                                                                    </option>
+                                                                                                    <option value=1>
+                                                                                                        Warga Asli Desa
+                                                                                                    </option>
+                                                                                                    <option value=5>Bukan
+                                                                                                        Warga
+                                                                                                        Asli Desa
+                                                                                                    </option>
+                                                                                                </select>
+                                                                                                <label
+                                                                                                    for="citizen_status">Status
+                                                                                                    KTP</label>
+                                                                                            </div>
+                                                                                            <input type="text"
+                                                                                                name="people_id[]"
+                                                                                                id="people_id{{ $p->people_id }}"
+                                                                                                value={{ $p->people_id }}
+                                                                                                hidden>
+                                                                                            <input type="text"
+                                                                                                name="code_name[]"
+                                                                                                id="code_name{{ $p->code_name }}"
+                                                                                                value={{ $p->code_name }}
+                                                                                                hidden>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                @endforeach
+                                                                            @endif
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -244,8 +251,12 @@
                                     <div class="card-header">
                                         <h1 style="color:#11235A;font-size:20px;font-weight:bold;"
                                             class="text-center mb-2">Hasil Perhitungan WP</h1>
+
                                     </div>
                                     <div class="card-body">
+                                        <span class="text-secondary">Berdasarkan hasil perhitungan WP, warga
+                                            yang berhak
+                                            mendapatkan bantuan sembako adalah</span>
                                         <div class="table-responsive">
                                             <table id="table-winner"
                                                 class="datatables-basic table table-bordered text-center"
@@ -353,16 +364,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($pvs as $p)
-                                                        <tr>
-                                                            <td class="text-truncate">{{ $p['code_name'] }}</td>
-                                                            <td class="text-truncate"> {{ $p['ownership'] }}</td>
-                                                            <td class="text-truncate"> {{ $p['income'] }}</td>
-                                                            <td class="text-truncate"> {{ $p['family_dependents'] }}
-                                                            </td>
-                                                            <td class="text-truncate"> {{ $p['citizen_status'] }}</td>
-                                                        </tr>
-                                                    @endforeach
+                                                    @if ($pvs != null)
+                                                        @foreach ($pvs as $p)
+                                                            <tr>
+                                                                <td class="text-truncate">{{ $p['code_name'] }}</td>
+                                                                <td class="text-truncate"> {{ $p['ownership'] }}</td>
+                                                                <td class="text-truncate"> {{ $p['income'] }}</td>
+                                                                <td class="text-truncate"> {{ $p['family_dependents'] }}
+                                                                </td>
+                                                                <td class="text-truncate"> {{ $p['citizen_status'] }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endif
                                                 </tbody>
                                             </table>
                                         </div>

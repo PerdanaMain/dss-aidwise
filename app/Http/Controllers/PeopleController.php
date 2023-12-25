@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\People;
+use Excel;
+use Illuminate\Http\Request;
 
 class PeopleController extends Controller
 {
@@ -31,6 +33,16 @@ class PeopleController extends Controller
         array_push($data, $arr);
 
         People::create($data);
+
+        return redirect()->route('people')->with('add_success', 'Data berhasil ditambahkan');
+    }
+    public function stores(Request $request)
+    {
+        $data = $request->validate([
+            "people_excel" => "required|mimes:xls,xlsx",
+        ]);
+        // process excel
+        Excel::import(new \App\Imports\PeoplesImport, $data["people_excel"]);
 
         return redirect()->route('people')->with('add_success', 'Data berhasil ditambahkan');
     }
